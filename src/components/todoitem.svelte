@@ -15,8 +15,8 @@
  checked = {isDone}
  />
  <span class="todoitem__text">{Text}</span>
- <button class="todoitem__btn" on:click = {dispatch('remove', {id})}>Del</button>
-</div>
+ <button class="todoitem__btn" on:click={dispatch('remove', {id})}>Del</button>
+ </div>
 
 <style>
     .todoitem {

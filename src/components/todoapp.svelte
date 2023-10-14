@@ -40,8 +40,8 @@
    items = items;
    localStorage.setItem('items', JSON,stringify(items));
 
-   function ondeleteitem (event) {
-     const idx = items.findIndex((id) => i.id === event.detail.id);
+   function ondeleteitem(event) {
+     const idx = items.findIndex((i) => i.id === event.detail.id);
      item.splice(idx, 1);
      items = items;
      localStorage.setItem('items', JSON,stringify(items));
@@ -52,7 +52,11 @@
         <Todolistcontrolls on:add = {onadditem} />
             <div class="todolistfield">
                 {#each items as item}
-                    <Todoitem id={item.id} Text={item.Text} isDone={item.isDone} on:change={onchangestatus} on:remove{ondeleteitem}/>
+                    <Todoitem id={item.id} 
+                    Text={item.Text} 
+                    isDone={item.isDone} 
+                    on:change={onchangestatus}
+                    on:remove={ondeleteitem} />
                 {/each}
              </div>
     </div>
