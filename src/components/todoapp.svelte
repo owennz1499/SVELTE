@@ -26,7 +26,7 @@
     const item = items.find((i) => i.id === event.detail.id );
     item.isDone = !item.isDone;
     items = items;
-    localStorage.setItem('items', JSON.stringify('items'));
+    localStorage.setItem('items', JSON.stringify(items)); 
    }
 
 
