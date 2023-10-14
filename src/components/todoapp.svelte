@@ -72,7 +72,7 @@ function ondeleteitem(event) {
     }
 
     .todolistfield {
-    background: rgb(110, 95, 95);
+    background: rgb(128, 122, 122);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
