@@ -10,23 +10,23 @@
 
   onMount(() => {
     if(localStorage.key('items')) {
-        items = JSON.parse(localStorage.getItem('items'));
+        items = JSON.parse(localStorage.getItem('items'))
     }
     if(items.length) {
-        items.forEach((i) => {
+    items.forEach((i) => {
         if (id < i.id) {
             id  =  i.id;
         }
     });
-    id++;
-         }
+    id=id++;
+  }
     });
 
    function onchangestatus(event) {
     const item = items.find((i) => i.id === event.detail.id );
     item.isDone = !item.isDone;
     items = items;
-    localStorage.setItem('items', JSON.stringify(items)); 
+    localStorage.setItem('items', JSON.stringify(items));
    }
 
 
@@ -36,27 +36,24 @@
         Text: event.detail.Text,
         isDone:false
    };
+   
    items.push(item);
    items = items;
-   localStorage.setItem('items', JSON,stringify(items));
-
-   function ondeleteitem(event) {
-     const idx = items.findIndex((i) => i.id === event.detail.id);
-     item.splice(idx, 1);
-     items = items;
-     localStorage.setItem('items', JSON,stringify(items));
-   }
+   localStorage.setItem('items', JSON.stringify(items));
 }
+
+function ondeleteitem(event) {
+    const idx = items.findIndex((i) => i.id === event.detail.id);
+    items.splice(idx, 1);
+    items = items;
+    localStorage.setItem('items', JSON.stringify(items));
+   };
 </script>
     <div class="todolist">
         <Todolistcontrolls on:add = {onadditem} />
             <div class="todolistfield">
                 {#each items as item}
-                    <Todoitem id={item.id} 
-                    Text={item.Text} 
-                    isDone={item.isDone} 
-                    on:change={onchangestatus}
-                    on:remove={ondeleteitem} />
+                    <Todoitem id={item.id} Text={item.Text} isDone={item.isDone} on:change={onchangestatus} on:remove={ondeleteitem}/>
                 {/each}
              </div>
     </div>
