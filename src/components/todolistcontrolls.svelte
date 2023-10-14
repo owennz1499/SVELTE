@@ -2,18 +2,18 @@
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher(); 
 
-    let inputvalue = '';
+    let inputValue = '';
     function onclick() {
-        if (inputvalue.length) {
-            dispatch('add', {text: inputvalue});
-            inputvalue = '';
+        if (inputValue.length) {
+            dispatch('add', {Text: inputValue});
+            inputValue = '';
         }
     }
 </script>
 
 
 <div class="todolistcontrols">
-    <input class="todolistinput" type="text" id="example" bind:value = {inputvalue} />
+    <input class="todolistinput" type="text" id="example" bind:value = {inputValue} />
     <button class="todolistbutton" on:click={onclick}>Добавить</button>
 </div>
 

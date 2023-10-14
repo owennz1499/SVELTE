@@ -1,17 +1,21 @@
-<script>
+<script> 
  export let id;
  export let isDone;
  export let Text;
-import { createEventDispatcher } from 'svelte';
+ import { createEventDispatcher } from 'svelte';
 
-const dispatch = createEventDispatcher();
+ const dispatch = createEventDispatcher();
 
 </script>
 
 <div class="todoitem" class:todoitem__done={isDone}>
-<input class="todoitem__check" type ="checkbox" on:change={dispatch('change', {id})}>
-<span class="todoitem__text">{Text}</span>
-<button class="todoitem__btn" on:click >Del</button>
+<input class="todoitem__check" 
+ type ="checkbox" 
+ on:change={dispatch('change', {id})}
+ checked = {isDone}
+ />
+ <span class="todoitem__text">{Text}</span>
+ <button class="todoitem__btn" on:click = {dispatch('remove', {id})}>Del</button>
 </div>
 
 <style>

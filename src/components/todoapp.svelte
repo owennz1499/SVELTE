@@ -1,6 +1,6 @@
 <script>
     import Todolistcontrolls from "./todolistcontrolls.svelte";
-    import Todoitem, { isDone } from "./todoitem.svelte";
+    import Todoitem from "./todoitem.svelte";
 	import { onMount } from "svelte"
 
 
@@ -10,16 +10,16 @@
 
   onMount(() => {
     if(localStorage.key('items')) {
-        items = JSON.parse(localStorage.getItem('items'))
+        items = JSON.parse(localStorage.getItem('items'));
     }
     if(items.length) {
-    item.foreach((i) => {
+        items.forEach((i) => {
         if (id < i.id) {
             id  =  i.id;
         }
     });
-    id=id++;
-  }
+    id++;
+         }
     });
 
    function onchangestatus(event) {
@@ -37,16 +37,16 @@
         isDone:false
    };
    items.push(item);
-   items= items;
+   items = items;
    localStorage.setItem('items', JSON,stringify(items));
-}
 
-   function ondeleteitem(event) {
-    const idx = items.findIndex((i) => i.id === event.detail.id);
-    item.splice(idx, 1);
-    items = items;
-    localStorage.setItem('items', JSON,stringify(items));
-   };
+   function ondeleteitem (event) {
+     const idx = items.findIndex((id) => i.id === event.detail.id);
+     item.splice(idx, 1);
+     items = items;
+     localStorage.setItem('items', JSON,stringify(items));
+   }
+}
 </script>
     <div class="todolist">
         <Todolistcontrolls on:add = {onadditem} />
