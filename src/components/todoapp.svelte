@@ -1,6 +1,6 @@
 <script>
     import Todolistcontrolls from "./todolistcontrolls.svelte";
-    import Todoitem from "./todoitem.svelte";
+    import Todoitem, { isDone } from "./todoitem.svelte";
 	import { onMount } from "svelte"
 
 
@@ -23,18 +23,14 @@
     });
 
    function onchangestatus(event) {
-    const item = items.find((i) => i.id === event,detail.id );
+    const item = items.find((i) => i.id === event.detail.id );
     item.isDone = !item.isDone;
     items = items;
     localStorage.setItem('items', JSON.stringify('items'));
    }
 
-   function ondeleteitem(event) {
-    const idx = items.findIndex(i=>i.id === event.detail.id)
-   }
 
-
-   function onadditem(Text) {
+   function onadditem(event) {
     const item = {
         id: id++,
         Text: event.detail.Text,
@@ -42,14 +38,23 @@
    };
    items.push(item);
    items= items;
+   localStorage.setItem('items', JSON,stringify(items));
 }
+
+   function ondeleteitem(event) {
+    const idx = items.findIndex((i) => i.id === event.detail.id);
+    item.splice(idx, 1);
+    items = items;
+    localStorage.setItem('items', JSON,stringify(items));
+   };
 </script>
     <div class="todolist">
         <Todolistcontrolls on:add = {onadditem} />
             <div class="todolistfield">
-                <Todoitem id={item.id}
-                         Text={item.Text} >
-    </div>
+                {#each items as item}
+                    <Todoitem id={item.id} Text={item.Text} isDone={item.isDone} on:change={onchangestatus} on:remove{ondeleteitem}/>
+                {/each}
+             </div>
     </div>
 <style>
     .todolist {

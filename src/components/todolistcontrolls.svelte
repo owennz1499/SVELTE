@@ -1,5 +1,6 @@
 <script>
-    import {
+    import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher(); 
 
     let inputvalue = '';
     function onclick() {
@@ -8,7 +9,6 @@
             inputvalue = '';
         }
     }
-} 
 </script>
 
 
