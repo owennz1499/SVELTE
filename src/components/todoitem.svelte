@@ -26,7 +26,7 @@
     }
 
     .todoitem__check {
-    height: 20px;
+    height: 40px;
     }
 
     .todoitem__text {
@@ -38,11 +38,12 @@
     .todoitem__btn {
         border: none;
         height: 30px;
-        border-radius: 10px;
+        border-radius: 40px;
         background-color: red;
     }
 
     .todoitem__done .todoitem__text {
         background: rgb(143, 218, 143);
+        border-radius: 30px;
     }
 </style>
