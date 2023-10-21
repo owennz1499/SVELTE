@@ -1,6 +1,6 @@
 <script> 
  export let id;
- export let isDone;
+ export let objDone;
  export let Text;
  import { createEventDispatcher } from 'svelte';
 
@@ -8,14 +8,14 @@
 
 </script>
 
-<div class="todoitem" class:todoitem__done={isDone}>
+<div class="todoitem" class:todoitem__done={objDone}>
 <input class="todoitem__check" 
  type ="checkbox" 
  on:change={dispatch('change', {id})}
- checked = {isDone}
+ checked = {objDone}
  />
  <span class="todoitem__text">{Text}</span>
- <button class="todoitem__btn" on:click={dispatch('remove', {id})}>Del</button>
+ <button class="todoitem__btn" on:click={dispatch('remove', {id})}>Delete</button>
  </div>
 
 <style>
