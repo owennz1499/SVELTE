@@ -24,7 +24,7 @@
 
    function onchangestatus(event) {
     const item = items.find((i) => i.id === event.detail.id );
-    item.isDone = !item.isDone;
+    item.objDone = !item.objDone;
     items = items;
     localStorage.setItem('items', JSON.stringify(items));
    }
@@ -34,7 +34,7 @@
     const item = {
         id: id++,
         Text: event.detail.Text,
-        isDone:false
+        objDone:false
    };
    
    items.push(item);
@@ -53,7 +53,7 @@ function ondeleteitem(event) {
         <Todolistcontrolls on:add = {onadditem} />
             <div class="todolistfield">
                 {#each items as item}
-                    <Todoitem id={item.id} Text={item.Text} isDone={item.isDone} on:change={onchangestatus} on:remove={ondeleteitem}/>
+                    <Todoitem id={item.id} Text={item.Text} objDone={item.objDone} on:change={onchangestatus} on:remove={ondeleteitem}/>
                 {/each}
              </div>
     </div>
